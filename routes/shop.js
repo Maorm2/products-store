@@ -3,7 +3,6 @@ const express = require('express');
 const path = require('path');
 
 const shopController = require('../controllers/shop');
-//const { route } = require('./admin');
 
 const router = express.Router();
 
