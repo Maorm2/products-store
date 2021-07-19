@@ -1,27 +1,64 @@
-<%- include('../includes/head.ejs') %>
-    </head>
-
-    <body>
-        <%- include('../includes/navigation.ejs') %>
+            <%- include('../includes/head.ejs') %>
+        </head>
+    
+        <body>
+            <%- include('../includes/navigation.ejs') %>
             <main>
                 <% if (orders.length <=0) { %>
-                    <h1>Nothing there!</h1> 
+                    <h1>The orders list is empty</h1> 
                     <% } else { %>
-                        <ul>
-                            <% orders.forEach(order=> { %>
-                                <li>
-                                    <h1># <%= order.id %></h1>
-                                    <ul>
-                                        <% order.products.forEach(product => { %>
-                                            <li>
-                                                <%= product.title %> (<%= product.orderItem.quantity %>)
-                                            </li>
-                                     <%   }); %>
-                                        
-                                    </ul>
-                                </li>
-                                <% }); %>
-                        </ul>
-                        <% } %>
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>Order id</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Unit price</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% let totalPrice = 0; %>
+                        <!-- <tr>
+                            <td>Hello</td>
+                        </tr>
+                        <tr class="active-row">
+                            <td>Hello2</td>
+                        </tr>
+                        <tr>
+                            <td>Hello3</td>
+                        </tr>
+                        <tr>
+                            <td>Hello4</td>
+                        </tr> -->
+                        <% orders.forEach(order=> { %>
+                    <!-- <tr class="<%= order.id % 2 === 0 ? 'active-row' : '' %>"> -->
+                        <tr class="<%= order.id % 2 === 0 ? 'row-color' : '' || order.id === 4 ? 'test' : ''  %>">
+                        <!-- <tr style="background-color: yellow"> -->   
+                        <% order.products.forEach(product => { %>
+                        <td><%= order.id %></td>
+                        <td><%= product.title %></td>
+                        <td><%= product.orderItem.quantity %></td>
+                        <td><%= product.price%>$</td>
+                        <td><%= product.price *  product.orderItem.quantity%>$</td>
+                        <% totalPrice = totalPrice + product.price *  product.orderItem.quantity %>
+                    </tr>
+                </tbody>
+                    <%   }); %>
+                    <% }); %>
+                    <td class="border-table active-row"> Total</td>
+                    <td class="border-table"></td>
+                    <td class="border-table"></td>
+                    <td class="border-table"></td>
+                    <td class="border-table active-row"><%= totalPrice.toFixed(2) %>$</td>
+                </table>
+             
+                <% } %>
+
+                <div class="centered">
+                    <form action="/submit-order" method="POST">
+                        <button type="submit" class="btn">Submit order</button>
+                    </form>
+                </div>
             </main>
             <%- include('../includes/end.ejs') %>

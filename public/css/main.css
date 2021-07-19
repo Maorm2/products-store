@@ -13,6 +13,7 @@ body {
 main {
   padding: 1rem;
   margin: auto;
+  
 }
 
 form {
@@ -152,10 +153,21 @@ form {
   justify-content: space-around;
   align-items: stretch;
 }
+ /* */ 
+.grid:focus-within .item,
+.grid:hover .item {
+  transform: translateX(-25%);
+}
 
-.card {
+.grid .product-item:focus,
+.grid .product-item:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.card {  
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  height: fit-content;
+  height: auto;  
 }
 
 .card__header,
@@ -173,12 +185,13 @@ form {
 .card__image {
   display: block;
   margin: 0 auto;
-
+  
 }
 
 .card__image img {
   height: auto;
-  max-width: 80%;
+  min-width: 1rem;
+  max-width: 35%;
   display: block;
   margin: 0 auto;
 }
@@ -193,6 +206,51 @@ form {
   margin: 0 0.25rem;
 }
 
+.order-table {
+  border-collapse: collapse;
+  margin-top: 5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.order-table thead tr {
+  background-color: #00695c;
+  color:#ffffff;
+  text-align: center;
+  font-weight: bold;
+}
+.order-table th,
+.order-table td {
+  padding: 12px 15px;
+}
+
+
+.order-table tbody tr {
+  text-align: center;
+  border-bottom: 1px solid #dddddd; 
+}
+
+.active-row {
+  font-weight: bold;
+  color: #00695c;
+}
+
+.row-color {
+  background-color: #e3e3e3;
+  
+}
+
+.border-table {
+  border-bottom: 2px solid #00695c;
+}
+
 .btn {
   display: inline-block;
   padding: 0.25rem 1rem;
@@ -203,6 +261,7 @@ form {
   background: white;
   border-radius: 3px;
   cursor: pointer;
+
 }
 
 .btn:hover,
@@ -222,12 +281,30 @@ form {
   color: white;
 }
 
+.header{background:rgb(0, 178, 255);color:#fff;}
+#lblCartCount {
+    font-size: 12px;
+    background: #e91640;
+    color: #fff;
+    padding: 0 10px;
+    vertical-align: top;
+    margin-left: -1px;
+}
+
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
 @media (min-width: 768px) {
   .main-header__nav {
     display: flex;
   }
 
-  #side-menu-toggle {
+  #side-menu-toggle { 
     display: none;
   }
 }

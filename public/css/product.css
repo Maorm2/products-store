@@ -5,10 +5,15 @@
     display: block;
 }
 
+
 .product-item {
     width: 20rem;
-    max-width: 95%;
+    max-width: 100%;
     margin: 1rem;
+    border-radius: 10px;
+    height: 20rem;
+    transition: transform 700ms;
+    
 }
 
 .product__title {
@@ -24,4 +29,10 @@
 
 .product__description {
     text-align: center;
+}
+
+
+.product-item:focus ~ .product-item,
+.product-item:hover ~ .product-item {
+  transform: translateX(3%);
 }
