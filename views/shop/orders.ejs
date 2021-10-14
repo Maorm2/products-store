@@ -15,36 +15,25 @@
                             <th>Quantity</th>
                             <th>Unit price</th>
                             <th>Price</th>
+                            <th>Invoice</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% let totalPrice = 0; %>
-                        <!-- <tr>
-                            <td>Hello</td>
-                        </tr>
-                        <tr class="active-row">
-                            <td>Hello2</td>
-                        </tr>
-                        <tr>
-                            <td>Hello3</td>
-                        </tr>
-                        <tr>
-                            <td>Hello4</td>
-                        </tr> -->
                         <% orders.forEach(order=> { %>
-                    <!-- <tr class="<%= order.id % 2 === 0 ? 'active-row' : '' %>"> -->
                         <tr class="<%= order.id % 2 === 0 ? 'row-color' : '' || order.id === 4 ? 'test' : ''  %>">
-                        <!-- <tr style="background-color: yellow"> -->   
-                        <% order.products.forEach(product => { %>
-                        <td><%= order.id %></td>
-                        <td><%= product.title %></td>
-                        <td><%= product.orderItem.quantity %></td>
-                        <td><%= product.price%>$</td>
-                        <td><%= product.price *  product.orderItem.quantity%>$</td>
-                        <% totalPrice = totalPrice + product.price *  product.orderItem.quantity %>
+                        <% order.products.forEach(p => { %>
+                        <td><%= order._id %></td>
+                        <td><%= p.product.title %></td>
+                        <td><%= p.quantity %></td>
+                        <td><%= p.product.price%>$</td>
+                        <td><%= p.product.price *  p.quantity%>$</td>
+                        <% totalPrice = totalPrice + p.product.price *  p.quantity %>
                     </tr>
                 </tbody>
                     <%   }); %>
+                        <td><a href="/orders/<%= order._id %>">Invoice</a></td>
+                 
                     <% }); %>
                     <td class="border-table active-row"> Total</td>
                     <td class="border-table"></td>
@@ -53,11 +42,11 @@
                     <td class="border-table active-row"><%= totalPrice.toFixed(2) %>$</td>
                 </table>
              
-                <% } %>
+                <% } %> 
 
                 <div class="centered">
                     <form action="/submit-order" method="POST">
-                        <button type="submit" class="btn">Submit order</button>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     </form>
                 </div>
             </main>

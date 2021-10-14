@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
 
 * {
   box-sizing: border-box;
@@ -7,13 +7,12 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 main {
   padding: 1rem;
   margin: auto;
-  
 }
 
 form {
@@ -25,7 +24,7 @@ form {
 }
 
 .image {
- height: 20rem;
+  height: 20rem;
 }
 
 .image img {
@@ -43,8 +42,10 @@ form {
 
 .main-header__nav {
   height: 100%;
-  display: none;
+  width: 100%;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .main-header__item-list {
@@ -153,7 +154,7 @@ form {
   justify-content: space-around;
   align-items: stretch;
 }
- /* */ 
+/* */
 .grid:focus-within .item,
 .grid:hover .item {
   transform: translateX(-25%);
@@ -165,9 +166,9 @@ form {
   z-index: 1;
 }
 
-.card {  
+.card {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  height: auto;  
+  height: auto;
 }
 
 .card__header,
@@ -185,7 +186,6 @@ form {
 .card__image {
   display: block;
   margin: 0 auto;
-  
 }
 
 .card__image img {
@@ -217,12 +217,11 @@ form {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
   margin-left: auto;
   margin-right: auto;
-
 }
 
 .order-table thead tr {
   background-color: #00695c;
-  color:#ffffff;
+  color: #ffffff;
   text-align: center;
   font-weight: bold;
 }
@@ -231,10 +230,9 @@ form {
   padding: 12px 15px;
 }
 
-
 .order-table tbody tr {
   text-align: center;
-  border-bottom: 1px solid #dddddd; 
+  border-bottom: 1px solid #dddddd;
 }
 
 .active-row {
@@ -244,7 +242,6 @@ form {
 
 .row-color {
   background-color: #e3e3e3;
-  
 }
 
 .border-table {
@@ -261,7 +258,6 @@ form {
   background: white;
   border-radius: 3px;
   cursor: pointer;
-
 }
 
 .btn:hover,
@@ -281,14 +277,39 @@ form {
   color: white;
 }
 
-.header{background:rgb(0, 178, 255);color:#fff;}
+.user-message {
+  margin: auto;
+  width: 30%;
+  border: 1px solid #4771fa;;
+  padding: .2rem;
+  border-radius:3px;
+  background: rgb(0, 178, 255);
+  text-align: center;
+}
+
+.user-message--error { 
+  margin: auto;
+  width: 30%;
+  border: 1px solid red;
+  padding: .2rem;
+  border-radius:3px;
+  text-align: center;
+  border-color: red;
+  color: red;
+  background: rgb(255, 187, 187); 
+}
+
+.header {
+  background: rgb(0, 178, 255);
+  color: #fff;
+}
 #lblCartCount {
-    font-size: 12px;
-    background: #e91640;
-    color: #fff;
-    padding: 0 10px;
-    vertical-align: top;
-    margin-left: -1px;
+  font-size: 12px;
+  background: #e91640;
+  color: #fff;
+  padding: 0 10px;
+  vertical-align: top;
+  margin-left: -1px;
 }
 
 .badge {
@@ -299,12 +320,32 @@ form {
   border-radius: 9px;
 }
 
+.pagination {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.pagination a {
+  text-decoration: none;
+  color: #00695c;
+  padding: 0.5rem;
+  border: 1px solid #00695c;
+  margin: 0 1rem;
+}
+
+.pagination a:hover,
+.pagination a:active,
+.pagination a.active {
+  background:#00695c;
+  color: white;
+}
+
 @media (min-width: 768px) {
   .main-header__nav {
     display: flex;
   }
 
-  #side-menu-toggle { 
+  #side-menu-toggle {
     display: none;
   }
 }
